@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PokeBall } from "./pokeball";
+import { PokeBall } from "../pokeball";
+import { ThemeToggle } from "./theme-toggle";
 export default function Navbar() {
   const pathname = usePathname();
 
@@ -54,6 +55,7 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
+          <ThemeToggle />
         </div>
       </div>
     </header>

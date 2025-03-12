@@ -3,6 +3,7 @@ import { Kanit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "@/context/theme-provider";
 
 const kanit = Kanit({
   variable: "--font-kanit",
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body
         className={`${kanit.variable} antialiased flex flex-col min-h-screen justify-between`}
       >
-        <Navbar />
-        <main className="container mx-auto px-4 py-6 flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider defaultTheme="system" storageKey="pokemon-theme">
+          <Navbar />
+          <main className="container mx-auto px-4 py-6 flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

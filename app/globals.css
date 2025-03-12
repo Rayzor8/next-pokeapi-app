@@ -83,7 +83,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   /* custom variable */
-  --accent-yellow: #FFEB00;
+  --accent-yellow: #ffeb00;
 }
 
 .dark {
@@ -126,12 +126,9 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-gradient-to-b from-red-400 to-red-500 dark:from-red-800 dark:to-red-900;
+    @apply bg-gradient-to-b from-red-400 via-yellow-400 to-red-300 dark:from-blue-900 dark:to-blue-600 dark:via-blue-500;
   }
 }
-
-
-
 
 /* animations */
 

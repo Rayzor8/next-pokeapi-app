@@ -6,7 +6,8 @@ export default function Footer() {
           Data provided by{" "}
           <a
             href="https://pokeapi.co/"
-            className="text-accent-red hover:underline"
+            className="text-accent-yellow hover:underline"
+            target="_blank"
           >
             PokéAPI
           </a>

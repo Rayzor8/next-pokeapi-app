@@ -1,12 +1,11 @@
-import BoxWhite from "@/components/ui/box-white";
+import BoxWhite from "@/components/custom-ui/box-white";
 import React from "react";
 
 export default function FavoritesPage() {
   return (
     <div>
-      <h1>My Favorites</h1>
-      
-      <BoxWhite>
+      <BoxWhite className="flex flex-col gap-4">
+        <h1>My Favorites</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
           excepturi amet ullam iure sit cum id ratione aliquid iste velit!

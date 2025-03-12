@@ -1,6 +1,6 @@
 "use client";
 
-import BoxWhite from "@/components/ui/box-white";
+import BoxWhite from "@/components/custom-ui/box-white";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -27,7 +27,8 @@ export default function Home() {
         />
       )}
 
-      <BoxWhite>
+      <BoxWhite  className="flex flex-col gap-4">
+        <h1>Home page</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
           excepturi amet ullam iure sit cum id ratione aliquid iste velit!
