@@ -1,32 +1,11 @@
-"use client";
-
 import BoxWhite from "@/components/ui/box-white";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import React from "react";
 
-export default function Home() {
-  const [isVisible, setIsVisible] = useState(false);
+export default function FavoritesPage() {
   return (
-    <div className="flex flex-col gap-12 items-start p-4">
-      <Button onClick={() => setIsVisible((prev) => !prev)}>
-        {isVisible ? "Hide" : "Show"} Box
-      </Button>
-
-      {isVisible && (
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1.5, 1, 1],
-            rotate: [0, 0, 270, 270, 0],
-            borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-            transition: {
-              duration: 1.2,
-            },
-          }}
-          className="bg-black w-[300px] h-[300px]"
-        />
-      )}
-
+    <div>
+      <h1>My Favorites</h1>
+      
       <BoxWhite>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
