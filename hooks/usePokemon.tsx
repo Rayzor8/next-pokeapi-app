@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { PokemonType } from "@/enums";
 import { Pokemon } from "@/types";
-import { fetchPokemonByType } from "@/utils/api/fetchPokemonByType";
+import { fetchPokemonByType } from "@/lib/api/fetchPokemonByType";
 
 export function usePokemonByType(
   type: PokemonType,
