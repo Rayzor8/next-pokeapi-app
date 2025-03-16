@@ -3,12 +3,16 @@
 import BoxWhite from "@/components/custom-ui/box-white";
 import PokemonList from "@/components/pokemon-list";
 import { SearchBar } from "@/components/search-bar";
+import { Suspense } from "react";
+
 
 export default function Home() {
   return (
     <div>
       <div className="mt-8 max-w-xl mx-auto mb-8">
-        <SearchBar />
+        <Suspense>
+          <SearchBar />
+        </Suspense>
       </div>
 
       <BoxWhite className="flex flex-col gap-4">
