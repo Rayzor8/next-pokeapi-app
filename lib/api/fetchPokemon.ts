@@ -53,7 +53,36 @@ export async function fetchPokemonByType(
           (entry: { pokemon: { name: string; url: string } }) =>
             fetchPokemonDetails(entry.pokemon.url)
         )
-      ), totalPages: Math.ceil(totalCount / limit)
+      ),
+      totalPages: Math.ceil(totalCount / limit),
     };
   }
+}
+
+export async function fetchPokemonBySearch(
+  query: string,
+  page: number,
+  limit: number
+) {
+  // First get all pokemon (limited to first 1000 for performance)
+  const response = await fetch(`${API_ENDPOINTS.POKEMON}?limit=1000`);
+  const data = await response.json();
+
+  const filteredResults = data.results.filter((pokemon: { name: string }) =>
+    pokemon.name.includes(query.toLowerCase())
+  );
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const paginatedResults = filteredResults.slice(startIndex, endIndex);
+
+  return {
+    searchResults: await Promise.all(
+      paginatedResults.map((pokemon: { name: string; url: string }) =>
+        fetchPokemonDetails(pokemon.url)
+      )
+    ),
+    totalResults: filteredResults.length,
+    totalPages: Math.ceil(filteredResults.length / limit),
+  };
 }

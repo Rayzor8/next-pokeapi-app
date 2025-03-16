@@ -1,7 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { PokemonType } from "@/enums";
 import { Pokemon } from "@/types";
-import { fetchPokemonByType } from "@/lib/api/fetchPokemonByType";
+import {
+  fetchPokemonBySearch,
+  fetchPokemonByType,
+} from "@/lib/api/fetchPokemon";
 
 export function usePokemonByType(
   type: PokemonType,
@@ -34,4 +37,40 @@ export function usePokemonByType(
   }, [fetchData]);
 
   return { pokemonList, loading, totalPages };
+}
+
+export function usePokemonBySearch(query: string, page : number , limit : number) {
+  const [results, setResults] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(0);
+  const [totalResults, setTotalResults] = useState(0);
+
+  useEffect(() => {
+    const searchPokemon = async () => {
+      setLoading(true);
+      try {
+        const { searchResults, totalResults, totalPages } =
+          await fetchPokemonBySearch(query, page, limit);
+        setTotalResults(totalResults);
+        setTotalPages(totalPages);
+
+        setResults(searchResults);
+      } catch (error) {
+        console.error("Error searching Pokémon:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (query) {
+      searchPokemon();
+    } else {
+      setResults([]);
+      setTotalResults(0);
+      setTotalPages(0);
+      setLoading(false);
+    }
+  }, [query, page, limit]);
+
+  return { results, loading, totalPages, totalResults };
 }
