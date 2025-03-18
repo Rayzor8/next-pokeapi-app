@@ -18,7 +18,7 @@ export function Pagination({ currentPage, totalPages, onPrevPage, onNextPage, cl
         <ChevronLeft className="h-4 w-4" />
         Previous
       </Button>
-      <span className="text-sm dark:text-white">
+      <span className="text-sm  dark:text-white font-semibold">
         Page {currentPage} of {totalPages}
       </span>
       <Button

@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { PokemonType } from "@/enums";
-import { Pokemon } from "@/types";
+import { Pokemon, PokemonDetails } from "@/types";
 import {
+  fetchPokemonById,
   fetchPokemonBySearch,
   fetchPokemonByType,
 } from "@/lib/api/fetchPokemon";
@@ -39,7 +40,7 @@ export function usePokemonByType(
   return { pokemonList, loading, totalPages };
 }
 
-export function usePokemonBySearch(query: string, page : number , limit : number) {
+export function usePokemonBySearch(query: string, page: number, limit: number) {
   const [results, setResults] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
@@ -73,4 +74,28 @@ export function usePokemonBySearch(query: string, page : number , limit : number
   }, [query, page, limit]);
 
   return { results, loading, totalPages, totalResults };
+}
+
+export function usePokemonDetails(id: number) {
+  const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPokemonDetails = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchPokemonById(id);
+        setPokemon(data);
+      } catch (error) {
+        console.error("Error fetching Pokémon details:", error);
+        setPokemon(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPokemonDetails();
+  }, [id]);
+
+  return { pokemon, loading };
 }
