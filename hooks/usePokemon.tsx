@@ -87,7 +87,7 @@ export function usePokemonDetails(id: number) {
         const data = await fetchPokemonById(id);
         setPokemon(data);
       } catch (error) {
-        console.error("Error fetching Pokémon details:", error);
+        console.log("Error fetching Pokémon details:", error);
         setPokemon(null);
       } finally {
         setLoading(false);

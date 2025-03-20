@@ -12,9 +12,9 @@ interface PokemonCardProps {
 export function PokemonCard({ pokemon, priority = false }: PokemonCardProps) {
   return (
     <Link href={`/pokemon/${pokemon.id}`}>
-      <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-300 hover:-translate-y-1 cursor-pointer dark:bg-gray-700">
+      <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-300 hover:-translate-y-1 cursor-pointer bg-gray-100 dark:bg-gray-700">
         <CardContent className="p-0">
-          <div className=" p-6 flex flex-col items-center">
+          <div className=" p-6 flex flex-col items-center ">
             <div className="relative h-40 w-40">
               <Image
                 src={pokemon.image || "/placeholder.svg"}
