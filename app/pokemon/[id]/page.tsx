@@ -7,6 +7,7 @@ import useFavorites from "@/hooks/useFavorites";
 import { usePokemonDetails } from "@/hooks/usePokemon";
 import { ArrowLeft, Heart, Link } from "lucide-react";
 import React, { use, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function PokemonDetailPage({
   params,
@@ -18,7 +19,6 @@ export default function PokemonDetailPage({
   const { pokemon, loading } = usePokemonDetails(parseInt(paramsId.id));
   const { isFavorite, toggleFavorite } = useFavorites();
   const [favorited, setFavorited] = useState(false);
-
   useEffect(() => {
     if (paramsId.id) {
       setFavorited(isFavorite(Number.parseInt(paramsId.id)));
@@ -28,6 +28,11 @@ export default function PokemonDetailPage({
   const handleToggleFavorite = () => {
     const newState = toggleFavorite(Number.parseInt(paramsId.id));
     setFavorited(newState);
+    toast.info(`${newState ? "Added" : "Removed"} to favorites`, {
+      description: `${
+        newState ? `Added ${pokemon?.name}` : `${pokemon?.name} Removed`
+      } to favorites`,
+    });
   };
 
   if (loading)
