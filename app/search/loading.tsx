@@ -1,5 +1,5 @@
 import { CardSkeleton } from "@/components/card-skeleton";
 
 export default function Loading() {
-  return <CardSkeleton limit={12} />;
+  return <CardSkeleton limit={8} />;
 }

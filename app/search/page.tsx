@@ -42,7 +42,7 @@ export default function SearchPage() {
   };
 
   if (loading) {
-    return <BoxWhite>{<CardSkeleton limit={limit} />}</BoxWhite>;
+    return <BoxWhite>{<CardSkeleton limit={8} />}</BoxWhite>;
   }
 
   return (

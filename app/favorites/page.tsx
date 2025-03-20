@@ -1,37 +1,61 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PokemonCard } from "@/components/pokemon-card";
+import { motion } from "framer-motion";
+import useFavorites from "@/hooks/useFavorites";
+import { motionVariant } from "@/lib/const/motion-variant";
+import { CardSkeleton } from "@/components/card-skeleton";
 import BoxWhite from "@/components/custom-ui/box-white";
-import React from "react";
 
 export default function FavoritesPage() {
-  return (
-    <div>
-      <BoxWhite className="flex flex-col gap-4">
-        <h1>My Favorites</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-          excepturi amet ullam iure sit cum id ratione aliquid iste velit!
-          Labore dignissimos, maxime sed aperiam est eos officiis quidem error,
-          et consequuntur voluptatem rerum eveniet commodi ad. Quam, ratione
-          illum perspiciatis maxime officia quis et molestias ab commodi eos a
-          eius expedita nobis nostrum ducimus quibusdam esse, accusamus quaerat
-          adipisci temporibus voluptatem. Saepe delectus pariatur eos maxime
-          quod laboriosam dolore, unde tenetur sequi ut asperiores placeat est
-          itaque consequuntur dolores, praesentium, soluta beatae nostrum
-          officiis quos. Inventore, voluptatibus illum possimus consequuntur
-          placeat quo, suscipit doloribus quia ipsum eaque libero unde!
-          Accusamus aliquam, dolore incidunt aperiam quod ut obcaecati facere
-          nisi, reiciendis rerum facilis saepe beatae tempora modi quasi
-          laudantium. Nesciunt corrupti harum fugit odio, quasi optio rem
-          voluptas quidem dolore, maiores ipsa distinctio dolores. Suscipit
-          nobis, laboriosam quo eveniet quas aperiam, consequuntur unde
-          assumenda repellendus perspiciatis vel adipisci dignissimos, quam enim
-          blanditiis repudiandae optio voluptates maiores recusandae! Incidunt
-          quam architecto harum esse expedita placeat perspiciatis? Autem
-          perferendis odit voluptatibus corrupti qui reprehenderit, officia
-          illum aliquam laudantium accusamus natus quisquam consectetur atque
-          inventore voluptatum, quasi esse laboriosam. At numquam eaque amet
-          inventore cupiditate quasi beatae quia tempora! Ea error ratione nam!
-        </p>
+  const { favorites, loading } = useFavorites();
+
+  if (loading)
+    return (
+      <BoxWhite>
+        <CardSkeleton limit={4} />
       </BoxWhite>
-    </div>
+    );
+
+  return (
+    <BoxWhite>
+      <div className="flex items-center gap-4 mb-6">
+        <Link href="/">
+          <Button variant="outline" size="icon">
+            <ArrowLeft className="h-4 w-4" />
+          </Button>
+        </Link>
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+          Your Favorite Pokémon
+        </h1>
+      </div>
+
+      {favorites.length > 0 ? (
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          variants={motionVariant.container}
+          initial="hidden"
+          animate="show"
+        >
+          {favorites.map((pokemon) => (
+            <motion.div key={pokemon.id} variants={motionVariant.item}>
+              <PokemonCard pokemon={pokemon} />
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        <div className="text-center py-12">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            You haven`t added any Pokémon to your favorites yet.
+          </p>
+          <Link href="/" className="mt-4 inline-block">
+            <Button>Explore Pokémon</Button>
+          </Link>
+        </div>
+      )}
+    </BoxWhite>
   );
 }

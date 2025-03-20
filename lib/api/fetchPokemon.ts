@@ -86,3 +86,9 @@ export async function fetchPokemonBySearch(
     totalPages: Math.ceil(filteredResults.length / limit),
   };
 }
+
+export async function fetchPokemonById(id: number) {
+  const response = await fetch(`${API_ENDPOINTS.POKEMON}/${id}`);
+  const data = await response.json();
+  return data;
+}
