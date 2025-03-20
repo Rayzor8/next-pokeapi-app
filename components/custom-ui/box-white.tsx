@@ -12,7 +12,7 @@ export default function BoxWhite({
   return (
     <div
       className={cn(
-        "bg-gray-100 dark:bg-gray-800 shadow-md rounded-md p-6 dark:text-white animate-fade-in ",
+        "bg-gray-50 dark:bg-gray-800 shadow-md rounded-md p-6 dark:text-white animate-fade-in ",
         className
       )}
       {...rest}
