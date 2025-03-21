@@ -5,7 +5,7 @@ import BoxWhite from "@/components/custom-ui/box-white";
 import { Button } from "@/components/ui/button";
 import useFavorites from "@/hooks/useFavorites";
 import { usePokemonDetails } from "@/hooks/usePokemon";
-import { ArrowLeft, Heart, Link } from "lucide-react";
+import { ArrowLeft, Heart } from "lucide-react";
 import React, { use, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { colors } from "@/lib/const/colors";
 import { notFound } from "next/navigation";
 import PokemonTabs from "./pokemon-tabs";
+import Link from "next/link";
 
 export default function PokemonDetailPage({
   params,
