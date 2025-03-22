@@ -16,7 +16,7 @@ export const CardSkeleton = ({ limit }: CardSkeletonProps) => {
         {Array(limit)
           .fill(0)
           .map((_, index) => (
-            <Card key={index} className="overflow-hidden bg-gray-100 dark:bg-gray-700">
+            <Card key={index} className="overflow-hidden bg-gray-200 dark:bg-gray-700">
               <CardContent className="p-0">
                 <div className="p-6 flex flex-col items-center">
                   <Skeleton className="h-40 w-40 rounded-md mb-4" />

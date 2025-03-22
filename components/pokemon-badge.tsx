@@ -1,4 +1,4 @@
-import { colors } from "@/lib/const/colors";
+import { colors } from "@/lib/const";
 
 export function PokemonBadge({ type }: { type: string }) {
   const getTypeColor = (type: string) => {

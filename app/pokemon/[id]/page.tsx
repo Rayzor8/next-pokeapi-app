@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { colors } from "@/lib/const/colors";
+import { colors } from "@/lib/const";
 import { notFound } from "next/navigation";
 import PokemonTabs from "./pokemon-tabs";
 import Link from "next/link";

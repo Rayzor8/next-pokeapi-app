@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { PokemonCard } from "@/components/pokemon-card";
 import { motion } from "framer-motion";
 import useFavorites from "@/hooks/useFavorites";
-import { motionVariant } from "@/lib/const/motion-variant";
 import { CardSkeleton } from "@/components/card-skeleton";
 import BoxWhite from "@/components/custom-ui/box-white";
+import { motionVariant } from "@/lib/const";
 
 export default function FavoritesPage() {
   const { favorites, loading } = useFavorites();

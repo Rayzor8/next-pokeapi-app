@@ -9,7 +9,7 @@ import BoxWhite from "@/components/custom-ui/box-white";
 import { Pagination } from "@/components/pagination";
 import { CardSkeleton } from "@/components/card-skeleton";
 import { PokemonCard } from "@/components/pokemon-card";
-import { motionVariant } from "@/lib/const/motion-variant";
+import { motionVariant } from "@/lib/const";
 
 export default function SearchPage() {
   const router = useRouter();
